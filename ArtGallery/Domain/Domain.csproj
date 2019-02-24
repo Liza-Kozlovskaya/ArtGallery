@@ -73,6 +73,7 @@
     <Compile Include="Concrete\EFArtRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Entities\Art.cs" />
+    <Compile Include="Entities\Author.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
