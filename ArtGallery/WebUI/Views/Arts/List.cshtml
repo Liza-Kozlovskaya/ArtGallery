@@ -1,0 +1,19 @@
+﻿@using Domain.Entities
+@model IEnumerable<Art>
+
+@{
+    ViewBag.Title = "Arts";
+}
+
+@foreach(Art art in Model)
+{
+    <div>
+        <h3>@art.ArtName</h3>
+        <h3>@art.ArtOriginName</h3>
+        <p>@art.CreationDate</p>
+        <p>@art.Description</p>
+        <p>@art.Size</p>
+        <h4>@art.Price.ToString("# $")</h4>
+    </div>
+    <hr/>
+}
