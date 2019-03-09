@@ -89,3 +89,7 @@ C:\Users\A-Servis\source\repos\Gallery1\Gallery1\obj\Debug\Gallery1.csproj.CoreC
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\obj\Debug\Gallery1.csproj.CopyComplete
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\obj\Debug\Gallery1.dll
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\obj\Debug\Gallery1.pdb
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.dll
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.Mvc.dll
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.xml
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.Mvc.xml
