@@ -10,7 +10,6 @@ namespace Gallery1.Models
         public int Id { get; set; }
         public string GenreName { get; set; }
         public string GenreDescription { get; set; }
-
         public ICollection<ArtWork> ArtWorks { get; set; }
 
         public Genre()

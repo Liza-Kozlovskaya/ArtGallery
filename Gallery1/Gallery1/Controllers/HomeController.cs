@@ -15,12 +15,27 @@ namespace Gallery1.Controllers
         ArtContext db = new ArtContext();
         public int pageSize = 12;
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchBy, string search)
         {
-            var arts = db.ArtWorks.Include(a => a.Author).Include(a => a.Type).Include(a=>a.School).Include(a=>a.Location.City.Country);
-            return View(arts.ToList().ToPagedList(page ?? 1, pageSize));
-            //http://professorweb.ru/my/ASP_NET/gamestore/level1/1_4.php навигация
-            //http://professorweb.ru/my/ASP_NET/gamestore/level1/1_6.php каталог    
+            var arts = db.ArtWorks
+                .Include(a => a.Author)
+                .Include(a => a.Type)
+                .Include(a=>a.School)
+                .Include(a=>a.Location.City.Country)
+                .Include(a=>a.Genre);
+
+            if(searchBy == "Type")
+            {
+                return View(arts
+                    .Where(x => x.Type.TypeName.StartsWith(search) || search == null)
+                    .ToList().ToPagedList(page ?? 1, pageSize));
+            }
+            else
+            {
+                return View(arts
+                    .Where(x => x.WorkName.StartsWith(search) || search == null)
+                    .ToList().ToPagedList(page ?? 1, pageSize));
+            }  
         }
 
         public ActionResult About()
