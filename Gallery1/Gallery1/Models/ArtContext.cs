@@ -9,6 +9,7 @@ namespace Gallery1.Models
     public class ArtContext : DbContext
     {
         public DbSet<Type> Types { get; set; }
+        public string CurrentType { get; set; }
         public DbSet<ArtWork> ArtWorks { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Genre> Genres { get; set; }

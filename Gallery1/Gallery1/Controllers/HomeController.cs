@@ -15,29 +15,37 @@ namespace Gallery1.Controllers
         ArtContext db = new ArtContext();
         public int pageSize = 12;
 
-        public ActionResult Index(int? page, string searchBy, string search)
+        public ActionResult Index(int? page, string searchBy, string search, string type)
         {
             var arts = db.ArtWorks
                 .Include(a => a.Author)
                 .Include(a => a.Type)
-                .Include(a=>a.School)
-                .Include(a=>a.Location.City.Country)
-                .Include(a=>a.Genre);
-
+                .Include(a => a.School)
+                .Include(a => a.Location.City.Country)
+                .Include(a => a.Genre);
+            //кнопки жанров
+            if(type != null)
+            {
+                return View(arts.Where(x => x.Type.TypeName.StartsWith(type))
+                .ToList().ToPagedList(page ?? 1, pageSize));
+            }
+            //пользовательский поиск по жанру
             if(searchBy == "Type")
             {
                 return View(arts
                     .Where(x => x.Type.TypeName.StartsWith(search) || search == null)
                     .ToList().ToPagedList(page ?? 1, pageSize));
             }
-            else
+            else //пользовательский поиск по названию
             {
                 return View(arts
                     .Where(x => x.WorkName.StartsWith(search) || search == null)
                     .ToList().ToPagedList(page ?? 1, pageSize));
-            }  
-        }
+            } 
 
+            
+            
+        }
 
         public ActionResult About()
         {
