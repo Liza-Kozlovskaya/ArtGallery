@@ -1,11 +1,13 @@
-﻿<link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+﻿<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+
+
+@model IEnumerable<string>
+
 <input type="checkbox" id="nav-toggle" hidden>
 <label for="nav-toggle" class="nav-toggle" @*onclick*@></label>
 
 
 <div class="nav">
-
-    @model IEnumerable<string>
 
     @Html.ActionLink("Все типы", "Index", "Home", null,
         new { @class = "btn btnblock btn-default btn-lg" })
@@ -13,20 +15,15 @@
 
     @foreach (var link in Model)
     {
-        <ul>
-            @Html.RouteLink(link, new
-       {
-           controller = "Home",
-           action = "Index",
-           type = link,
-       }, new
-       {
-           @class = "btn btnblock btn-default btn-lg"
-                 + (link == ViewBag.SelectedTypes ? "btn-primary" : "")
-       })
-            
-            
-        </ul>
+        @Html.RouteLink(link, new
+        {
+            controller = "Home",
+            action = "Index",
+            type = link,
+        }, new
+        {
+            @class ="btn btnblock btn-default btn-lg"
+            +(link == ViewBag.SelectedTypes ? "btn-primary" : "")
+        })
     }
-    </div>
-
+</div>
