@@ -17,6 +17,11 @@
     }
 
 </p>
+<div class="row panel">
+@*<div id="types" class="col-xs-3">*@
+@Html.Action("Menu", "Navigation")
+</div>
+@*</div>*@
 <div class="container">
     @foreach (var item in Model)
     {
@@ -78,7 +83,7 @@
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
     }
 </div>
 
