@@ -1,19 +1,29 @@
-﻿@model IEnumerable<string>
-
-@Html.ActionLink("Все типы", "Index", "Home", null,
-    new { @class = "btn btnblock btn-default btn-lg" })
+﻿<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
 
 
-@foreach (var link in Model)
-{
-    @Html.RouteLink(link, new
+@model IEnumerable<string>
+
+<input type="checkbox" id="nav-toggle" hidden>
+<label for="nav-toggle" class="nav-toggle" @*onclick*@></label>
+
+
+<div class="nav">
+
+    @Html.ActionLink("Все типы", "Index", "Home", null,
+        new { @class = "btn btnblock btn-default btn-lg" })
+
+
+    @foreach (var link in Model)
     {
-        controller = "Home",
-        action = "Index",
-        type = link,
-    }, new
-    {
-        @class ="btn btnblock btn-default btn-lg"
-        +(link == ViewBag.SelectedTypes ? "btn-primary" : "")
-    })
-}
+        @Html.RouteLink(link, new
+        {
+            controller = "Home",
+            action = "Index",
+            type = link,
+        }, new
+        {
+            @class ="btn btnblock btn-default btn-lg"
+            +(link == ViewBag.SelectedTypes ? "btn-primary" : "")
+        })
+    }
+</div>
