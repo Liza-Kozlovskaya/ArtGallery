@@ -4,26 +4,28 @@
 @model IEnumerable<string>
 
 <input type="checkbox" id="nav-toggle" hidden>
-<label for="nav-toggle" class="nav-toggle" @*onclick*@></label>
+<label for="nav-toggle" class="nav-toggle" onclick></label>
 
 
 <div class="nav">
-
-    @Html.ActionLink("Все типы", "Index", "Home", null,
+    <ul>
+        <li>
+            @Html.ActionLink("Все типы", "Index", "Home", null,
         new { @class = "btn btnblock btn-default btn-lg" })
 
-
-    @foreach (var link in Model)
-    {
-        @Html.RouteLink(link, new
-        {
-            controller = "Home",
-            action = "Index",
-            type = link,
-        }, new
-        {
-            @class ="btn btnblock btn-default btn-lg"
-            +(link == ViewBag.SelectedTypes ? "btn-primary" : "")
-        })
-    }
+            @foreach (var link in Model)
+            {
+                @Html.RouteLink(link, new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    type = link,
+                }, new
+                {
+                    @class ="btn btnblock btn-default btn-lg"
+                    +(link == ViewBag.SelectedTypes ? "btn-primary" : "")
+                })
+            }
+        </li>
+    </ul>
 </div>
