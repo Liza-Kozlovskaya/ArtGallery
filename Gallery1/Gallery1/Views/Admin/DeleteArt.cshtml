@@ -1,0 +1,27 @@
+﻿@model Gallery1.Models.ArtWork
+    
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удаление арта</h2>
+<dl>
+    <dt>Название</dt>
+    <dd>
+        @Html.DisplayFor(model => model.WorkName)
+    </dd>
+
+    @*<dt>Автор</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Author)
+    </dd>
+    <dt>Цена</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Price)
+    </dd>*@
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

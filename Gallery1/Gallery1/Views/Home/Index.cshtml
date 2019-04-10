@@ -105,7 +105,7 @@
 @*Таймер перелистывания слайдера*@
 <script>
     jQuery('#mogo-slider').carousel({
-        interval: 5
+        interval: 2
     })
 </script>
 
@@ -186,5 +186,5 @@
     }
 </div>
 
-    Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

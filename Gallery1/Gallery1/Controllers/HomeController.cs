@@ -46,7 +46,10 @@ namespace Gallery1.Controllers
 
         public ViewResult ViewArt(int? Id)
         {
-            ArtWork artWork = db.ArtWorks.Include(a => a.Author).FirstOrDefault(a => a.Id == Id);
+            ArtWork artWork = db.ArtWorks
+                .Include(a => a.Author)
+                .Include(a => a.Type)
+                .FirstOrDefault(a => a.Id == Id);
             //ArtWork artWork = db.ArtWorks.FirstOrDefault(a => a.Id == Id);
             return View(artWork);
         }
