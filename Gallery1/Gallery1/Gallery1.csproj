@@ -152,6 +152,7 @@
     <Compile Include="Models\AuthorizationUser.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\GenerUser.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Location.cs" />

@@ -20,14 +20,24 @@ namespace Gallery1.Controllers
 
         public ViewResult EditArts(int Id)
         {
-            ArtWork artWork = db.ArtWorks.FirstOrDefault(a => a.Id == Id);
-            return View(artWork);
+            using (ArtContext db = new ArtContext())
+            {
+                var model = new EditModel
+                {
+                    ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id),
+                    Authors = db.Authors.ToList()
+                };
+                return View(model);
+            }
+            //ArtWork artWork = db.ArtWorks.Include(a => a.Author)
+            //    .FirstOrDefault(a => a.Id == Id);
+            //return View(artWork);
         }
 
         [HttpPost]
-        public ActionResult EditArts(ArtWork artWork)
+        public ActionResult EditArts(EditModel model)
         {
-            db.Entry(artWork).State = EntityState.Modified;
+            db.Entry(model).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("ListArts");
         }

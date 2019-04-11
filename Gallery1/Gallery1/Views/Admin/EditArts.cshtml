@@ -1,88 +1,120 @@
-﻿@{
+﻿<link href="~/Content/admin.css" rel="stylesheet" />
+@model Gallery1.Models.EditModel
+@{
     ViewBag.Title = "Редактировать книгу";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/admin.css" rel="stylesheet" />
-@model Gallery1.Models.ArtWork
-<h2>Арт № @Model.Id</h2>
+
+<h2>Арт № @Model.ArtWorks.WorkName</h2>
 
 @using (Html.BeginForm("EditArts", "Admin", FormMethod.Post))
 {
     <div class="admin">
         <div class="admin-right">
             <fieldset>
-                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.ArtWorks.Id)
                 <p>
-                    @Html.LabelFor(model => model.WorkName, "Название арта")
+                    @Html.LabelFor(model => model.ArtWorks.WorkName, "Название арта")
                     <br />
-                    @Html.EditorFor(model => model.WorkName)
+                    @Html.EditorFor(model => model.ArtWorks.WorkName)
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.OriginWorkName, "Настоящие название арта")
+                    @Html.LabelFor(model => model.ArtWorks.OriginWorkName, "Настоящие название арта")
                     <br />
-                    @Html.EditorFor(model => model.OriginWorkName)
+                    @Html.EditorFor(model => model.ArtWorks.OriginWorkName)
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.CreationDate, "Дата создания")
+                    @Html.LabelFor(model => model.ArtWorks.CreationDate, "Дата создания")
                     <br />
-                    @Html.EditorFor(model => model.CreationDate)
+                    @Html.EditorFor(model => model.ArtWorks.CreationDate)
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.Description, "Описание арта")
+                    @Html.LabelFor(model => model.ArtWorks.Description, "Описание арта")
                     <br />
-                    @Html.EditorFor(model => model.Description)
+                    @Html.EditorFor(model => model.ArtWorks.Description)
                 </p>
                 <p>
-                    @Html.LabelFor(model => model.Size, "Размер арта")
+                    @Html.LabelFor(model => model.ArtWorks.Size, "Стоимость арта")
                     <br />
-                    @Html.EditorFor(model => model.Size)
+                    @Html.EditorFor(model => model.ArtWorks.Size)
                 </p>
-                <p>
-                    @Html.LabelFor(model => model.Price, "Цена арта")
-                    <br />
-                    @Html.EditorFor(model => model.Price)
-                </p>
+
                 <p><input type="submit" value="Отправить" /></p>
             </fieldset>
         </div>
         <div class="admin-center">
             <fieldset>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateType")
-                    @Html.LabelFor(model => model.TypeId, "Внешний ключ типа арта")
-                    <br />
-                    @Html.EditorFor(model => model.TypeId)
-                </p>
-                <p>
-                    @Html.ActionLink("Create new author", "CreateAuthor")
-                    @Html.LabelFor(model => model.AuthorId, "Внешний ключ автора арта")
-                    <br />
-                    @Html.EditorFor(model => model.AuthorId)
-                </p>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateGenre")
-                    @Html.LabelFor(model => model.GenreId, "Внешний ключ жанра")
-                    <br />
-                    @Html.EditorFor(model => model.GenreId)
-                </p>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateSchool")
-                    @Html.LabelFor(model => model.SchoolId, "Внешний ключ школы арта")
-                    <br />
-                    @Html.EditorFor(model => model.SchoolId)
-                </p>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateTechnique")
-                    @Html.LabelFor(model => model.TechniqueId, "Внешний ключ технологии создания арта")
-                    <br />
-                    @Html.EditorFor(model => model.TechniqueId)
-                </p>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateLocation")
-                    @Html.LabelFor(model => model.LocationId, "Внешний ключ для хранения работы")
-                    <br />
-                    @Html.EditorFor(model => model.LocationId)
-                </p>
+                <details>
+                    <summary>Выберите тип</summary>
+                    <p>
+                        @Html.ActionLink("Create new type", "CreateType")
+                        <br />
+                        @Html.LabelFor(model => model.ArtWorks.TypeId, "Внешний ключ типа арта")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.TypeId)
+                    </p>
+                </details>
+                <br />
+                <details>
+                    <summary>Выберите автора</summary>
+                    <p>
+                        @Html.ActionLink("Create new author", "CreateAuthor")
+                        <br />
+                        @*<select>*@
+                            @foreach (var author in Model.Authors)
+                            {
+                                @Html.DisplayFor(modelItem => author.NameAuthor)
+                            }
+                        @*</select>*@
+                        @Html.LabelFor(model => model.ArtWorks.Author.Id, "Внешний ключ автора арта")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.Author.Id)
+                    </p>
+                </details>
+                <br />
+                <details>
+                    <summary>Выберите жанр</summary>
+                    <p>
+                        @Html.ActionLink("Create new type", "CreateGenre")
+                        <br />
+                        @Html.LabelFor(model => model.ArtWorks.GenreId, "Внешний ключ жанра")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.GenreId)
+                    </p>
+                </details>
+                <br />
+                <details>
+                    <summary>Выберите школу</summary>
+                    <p>
+                        @Html.ActionLink("Create new type", "CreateSchool")
+                        <br />
+                        @Html.LabelFor(model => model.ArtWorks.SchoolId, "Внешний ключ школы арта")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.SchoolId)
+                    </p>
+                </details>
+                <br />
+                <details>
+                    <summary>Выберите технику</summary>
+                    <p>
+                        @Html.ActionLink("Create new type", "CreateTechnique")
+                        <br />
+                        @Html.LabelFor(model => model.ArtWorks.TechniqueId, "Внешний ключ технологии создания арта")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.TechniqueId)
+                    </p>
+                </details>
+                <br />
+                <details>
+                    <summary>Выберите локацию</summary>
+                    <p>
+                        @Html.ActionLink("Create new type", "CreateLocation")
+                        <br />
+                        @Html.LabelFor(model => model.ArtWorks.LocationId, "Внешний ключ для хранения работы")
+                        <br />
+                        @Html.EditorFor(model => model.ArtWorks.LocationId)
+                    </p>
+                </details>
             </fieldset>
         </div>
         <div class="admin-upload-img">
