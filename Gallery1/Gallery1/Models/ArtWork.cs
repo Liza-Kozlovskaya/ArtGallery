@@ -39,6 +39,9 @@ namespace Gallery1.Models
         public int? LocationId { get; set; }
         public Location Location { get; set; }
 
-        public IEnumerator<Author> Authors { get; }
+        //внешний ключ для фото арта
+        public int? PhotoArtId { get; set; }
+        public PhotoArt PhotoArt { get; set; }
+
     }
 }

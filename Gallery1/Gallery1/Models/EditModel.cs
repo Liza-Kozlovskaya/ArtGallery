@@ -8,7 +8,7 @@ namespace Gallery1.Models
     public class EditModel
     {
         public ArtWork ArtWorks { get; set; }
-        //public Author Author { get; set; }
+        public Author Author { get; set; }
         public IEnumerable<Author> Authors { get; set; }
     }
 }

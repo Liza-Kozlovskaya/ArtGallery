@@ -37,7 +37,7 @@ namespace Gallery1.Controllers
         [HttpPost]
         public ActionResult EditArts(EditModel model)
         {
-            db.Entry(model).State = EntityState.Modified;
+            db.Entry(model.ArtWorks).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("ListArts");
         }

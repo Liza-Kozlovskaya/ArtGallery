@@ -22,6 +22,7 @@ namespace Gallery1.Controllers
                 .Include(a => a.Type)
                 .Include(a => a.School)
                 .Include(a => a.Location.City.Country)
+                .Include(a=> a.PhotoArt)
                 .Include(a => a.Genre);
             //кнопки жанров
             if(type != null)

@@ -61,14 +61,20 @@
                         @Html.ActionLink("Create new author", "CreateAuthor")
                         <br />
                         @*<select>*@
-                            @foreach (var author in Model.Authors)
-                            {
-                                @Html.DisplayFor(modelItem => author.NameAuthor)
-                            }
-                        @*</select>*@
-                        @Html.LabelFor(model => model.ArtWorks.Author.Id, "Внешний ключ автора арта")
+                        @*@foreach (var author in Model.Authors)
+            {
+                @Html.DisplayFor(modelItem => author.NameAuthor)
+            }*@
+                        <summary>Выберите автора</summary>
+                        @Html.ActionLink("Create new author", "CreateAuthor")
                         <br />
-                        @Html.EditorFor(model => model.ArtWorks.Author.Id)
+                        @Html.DropDownList("Author", new SelectList(Model.Authors.ToList()))<br />
+                        @Html.LabelFor(model => model.ArtWorks.AuthorId, "Внешний ключ автора арта")
+                        <br />
+                    @*</select>*@
+                    @*@Html.LabelFor(model => model.ArtWorks.AuthorId, "Внешний ключ автора арта")
+                    <br />
+                    @Html.EditorFor(model => model.ArtWorks.AuthorId)*@
                     </p>
                 </details>
                 <br />
