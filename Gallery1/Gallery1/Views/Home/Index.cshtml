@@ -19,10 +19,19 @@
                                         Welcome <br> to Art Gallery
                                     </h3>
                                     <span class="verticle-bar"></span>
-                                    <div class="btn-action">
-                                        <a href="~/User/Login" class="btn btn-primary">Logout</a>
-                                        <a href="~/User/Register" class="btn btn-primary">Register</a>
-                                    </div>
+                                    @if (this.User.Identity.IsAuthenticated)
+                                    {
+                                        <div class="btn-action">
+                                            <a href="~/User/LogOff" class="btn btn-primary">LogOff</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="btn-action">
+                                            <a href="~/User/Login" class="btn btn-primary">Logout</a>
+                                            <a href="~/User/Register" class="btn btn-primary">Register</a>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                             <div class="item">

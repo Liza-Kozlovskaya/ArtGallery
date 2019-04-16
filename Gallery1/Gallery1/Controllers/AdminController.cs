@@ -15,7 +15,13 @@ namespace Gallery1.Controllers
         ArtContext db = new ArtContext();
         public ActionResult ListArts()
         {
-            return View(db.ArtWorks);
+            return View(db.ArtWorks
+                .Include(a => a.Type)
+                .Include(a => a.Author)
+                .Include(a => a.Genre)
+                .Include(a => a.Location)
+                .Include(a => a.Technique)
+                .Include(a => a.School));
         }
 
         public ViewResult EditArts(int Id)

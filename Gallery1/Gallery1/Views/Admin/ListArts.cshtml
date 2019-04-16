@@ -14,40 +14,40 @@
         <th class="text-center">
             @Html.DisplayNameFor(model => model.Id)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.WorkName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.OriginWorkName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Size)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.TypeId)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.AuthorId)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.GenreId)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.SchoolId)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.TechniqueId)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.LocationId)
         </th>
         <th>
@@ -79,26 +79,33 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.TypeId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.TypeId)</b><br />
+            @Html.DisplayFor(modelItem => item.Type.TypeName)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.AuthorId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.AuthorId)</b><br />
+            @Html.DisplayFor(modelItem => item.Author.NameAuthor)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.GenreId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.GenreId)</b><br />
+            @Html.DisplayFor(modelItem => item.Genre.GenreName)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.SchoolId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.SchoolId)</b><br />
+            @Html.DisplayFor(modelItem => item.School.SchoolName)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.TechniqueId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.TechniqueId)</b><br />
+            @Html.DisplayFor(modelItem => item.Technique.TechniqueName)
         </td>
         <td class="text-center">
-            @Html.DisplayFor(modelItem => item.LocationId)
+            <b style="color:brown">@Html.DisplayFor(modelItem => item.LocationId)</b><br />
+            @Html.DisplayFor(modelItem => item.Location.LocationName)
         </td>
+
         <td>
-            @Html.ActionLink("Edit", "EditArts", new { item.Id }) 
-            @Html.ActionLink("Delete", "DeleteArt", new { id=item.Id })
+            @Html.ActionLink("Edit", "EditArts", new { item.Id })
+            @Html.ActionLink("Delete", "DeleteArt", new { id = item.Id })
         </td>
     </tr>
 }
