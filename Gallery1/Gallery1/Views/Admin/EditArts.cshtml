@@ -79,8 +79,92 @@
                                 <div class="fluid-row">
                                     @Html.ActionLink("Создать нового автора  ", "CreateAuthor")<img src="~/image/4.ico" /><br />
                                     @Html.DropDownList("Author", new SelectList(Model.Authors.ToList()))<br />
-                                    @Html.LabelFor(model => model.ArtWorks.AuthorId, "")<br />
                                     @Html.EditorFor(model => model.ArtWorks.AuthorId)<br />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-3" data-toggle="detail-3">
+                            <div class="col-xs-5">
+                                Выберите тип
+                            </div>
+                            <div><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-3">
+                            <hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    @Html.ActionLink("Создать новый тип  ", "CreateType")<img src="~/image/4.ico" /><br />
+                                    @Html.EditorFor(model => model.ArtWorks.TypeId)<br />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-4" data-toggle="detail-4">
+                            <div class="col-xs-5">
+                                Выберите жанр
+                            </div>
+                            <div><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-4">
+                            <hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    @Html.ActionLink("Создать новый жанр  ", "CreateGenre")<img src="~/image/4.ico" /><br />
+                                    @Html.EditorFor(model => model.ArtWorks.GenreId)
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-5" data-toggle="detail-5">
+                            <div class="col-xs-5">
+                                Выберите школу
+                            </div>
+                            <div><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-5">
+                            <hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    @Html.ActionLink("Создать новую школу  ", "CreateSchool")<img src="~/image/4.ico" /><br />
+                                    @Html.EditorFor(model => model.ArtWorks.SchoolId)
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-6" data-toggle="detail-6">
+                            <div class="col-xs-5">
+                                Выберите технику
+                            </div>
+                            <div><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-6">
+                            <hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    @Html.ActionLink("Создать новую технологию  ", "CreateTechnique")<img src="~/image/4.ico" /><br />
+                                    @Html.EditorFor(model => model.ArtWorks.TechniqueId)
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row toggle" id="dropdown-detail-7" data-toggle="detail-7">
+                            <div class="col-xs-5">
+                                Выберите локацию
+                            </div>
+                            <div><i class="fa fa-chevron-down pull-right"></i></div>
+                        </div>
+                        <div id="detail-7">
+                            <hr>
+                            <div class="container">
+                                <div class="fluid-row">
+                                    @Html.ActionLink("Создать новую локацию  ", "CreateLocation")<img src="~/image/4.ico" /><br />
+                                    @Html.EditorFor(model => model.ArtWorks.LocationId)
                                 </div>
                             </div>
                         </div>
@@ -88,66 +172,6 @@
                 </ul>
             </div>
         </div>
-
-
-
-
-        @*<div class="form-group">
-                <label>Выберите тип</label><hr />
-                @Html.ActionLink("Create new type", "CreateType")
-                @Html.EditorFor(model => model.ArtWorks.TypeId)
-            </div>*@
-        @*<div>
-                <label>Выберите автора</label><hr />
-                @Html.ActionLink("Create new author", "CreateAuthor")
-                @Html.DropDownList("Author", new SelectList(Model.Authors.ToList()))<br />
-                @Html.LabelFor(model => model.ArtWorks.AuthorId, "")
-                @Html.EditorFor(model => model.ArtWorks.AuthorId)
-            </div>
-
-            <details>
-                <summary>Выберите жанр</summary>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateGenre")
-                    <br />
-                    @Html.LabelFor(model => model.ArtWorks.GenreId, "Внешний ключ жанра")
-                    <br />
-                    @Html.EditorFor(model => model.ArtWorks.GenreId)
-                </p>
-            </details>
-            <br />
-            <details>
-                <summary>Выберите школу</summary>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateSchool")
-                    <br />
-                    @Html.LabelFor(model => model.ArtWorks.SchoolId, "Внешний ключ школы арта")
-                    <br />
-                    @Html.EditorFor(model => model.ArtWorks.SchoolId)
-                </p>
-            </details>
-            <br />
-            <details>
-                <summary>Выберите технику</summary>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateTechnique")
-                    <br />
-                    @Html.LabelFor(model => model.ArtWorks.TechniqueId, "Внешний ключ технологии создания арта")
-                    <br />
-                    @Html.EditorFor(model => model.ArtWorks.TechniqueId)
-                </p>
-            </details>
-            <br />
-            <details>
-                <summary>Выберите локацию</summary>
-                <p>
-                    @Html.ActionLink("Create new type", "CreateLocation")
-                    <br />
-                    @Html.LabelFor(model => model.ArtWorks.LocationId, "Внешний ключ для хранения работы")
-                    <br />
-                    @Html.EditorFor(model => model.ArtWorks.LocationId)
-                </p>
-            </details>*@
     </div>
 
     <div class="second_col">
