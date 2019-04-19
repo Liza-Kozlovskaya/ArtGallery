@@ -31,7 +31,8 @@ namespace Gallery1.Controllers
                 var model = new EditModel
                 {
                     ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id),
-                    Authors = db.Authors.ToList()
+                    Authors = db.Authors.ToList(),
+                    PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id)
                 };
                 return View(model);
             }
@@ -41,9 +42,16 @@ namespace Gallery1.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditArts(EditModel model)
+        public ActionResult EditArts(EditModel model, HttpPostedFileBase image = null)
         {
-            db.Entry(model.ArtWorks).State = EntityState.Modified;
+            if(ModelState.IsValid)
+            {
+                model.PhotoArt.PhotoName = image.ContentType;
+                model.PhotoArt.Photo = new byte[image.ContentLength];
+                image.InputStream.Read(model.PhotoArt.Photo, 0, image.ContentLength);
+            }
+            db.Entry(model.ArtWorks).State = EntityState.Modified; /////// склеить вместе
+            //db.Entry(model.PhotoArt).State = EntityState.Modified; ////////
             db.SaveChanges();
             return RedirectToAction("ListArts");
         }
