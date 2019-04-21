@@ -78,8 +78,8 @@
                             <div class="container">
                                 <div class="fluid-row">
                                     @Html.ActionLink("Создать нового автора  ", "CreateAuthor")<img src="~/image/4.ico" /><br />
-                                    @Html.DropDownList("Author", new SelectList(Model.Authors.ToList()))<br />
-                                    @Html.EditorFor(model => model.ArtWorks.AuthorId)<br />
+                                    @Html.EditorFor(model => model.ArtWorks.AuthorId, new { @class = "form-control" })<br />
+                                    @Html.DropDownListFor(odel => Model.AuthorId, new SelectList(Model.AuthorsCollection, "Id", "NameAuthor"), new { @class = "form-control" })
                                 </div>
                             </div>
                         </div>
@@ -114,23 +114,6 @@
                                 <div class="fluid-row">
                                     @Html.ActionLink("Создать новый жанр  ", "CreateGenre")<img src="~/image/4.ico" /><br />
                                     @Html.EditorFor(model => model.ArtWorks.GenreId)
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row toggle" id="dropdown-detail-5" data-toggle="detail-5">
-                            <div class="col-xs-5">
-                                Выберите школу
-                            </div>
-                            <div><i class="fa fa-chevron-down pull-right"></i></div>
-                        </div>
-                        <div id="detail-5">
-                            <hr>
-                            <div class="container">
-                                <div class="fluid-row">
-                                    @Html.ActionLink("Создать новую школу  ", "CreateSchool")<img src="~/image/4.ico" /><br />
-                                    @Html.EditorFor(model => model.ArtWorks.SchoolId)
                                 </div>
                             </div>
                         </div>

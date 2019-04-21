@@ -20,25 +20,35 @@ namespace Gallery1.Controllers
                 .Include(a => a.Author)
                 .Include(a => a.Genre)
                 .Include(a => a.Location)
-                .Include(a => a.Technique)
-                .Include(a => a.School));
+                .Include(a => a.Technique));
         }
 
         public ViewResult EditArts(int Id)
         {
+            EditModel model = new EditModel();
             using (ArtContext db = new ArtContext())
             {
-                var model = new EditModel
-                {
-                    ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id),
-                    Authors = db.Authors.ToList(),
-                    PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id)
-                };
-                return View(model);
+                model.ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id);
+                model.Authors = db.Authors.ToList();
+                model.PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id);
+                model.AuthorsCollection = db.Authors.ToList();
             }
+            return View(model);
+            //using (ArtContext db = new ArtContext())
+            //{
+            //    var model = new EditModel
+            //    {
+            //        ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id),
+            //        Authors = db.Authors.ToList(),
+            //        PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id),
+            //        AuthorsCollection = db.Authors.ToList<Author>();
+            //    };
+            //    return View(model);
+            //}
             //ArtWork artWork = db.ArtWorks.Include(a => a.Author)
             //    .FirstOrDefault(a => a.Id == Id);
             //return View(artWork);
+
         }
 
         [HttpPost]
@@ -133,18 +143,6 @@ namespace Gallery1.Controllers
             return RedirectToAction("ListArts");
         }
 
-        [HttpGet]
-        public ActionResult CreateSchool()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CreateSchool(School school)
-        {
-            db.Schools.Add(school);
-            db.SaveChanges();
-            return RedirectToAction("ListArts");
-        }
 
         [HttpGet]
         public ActionResult CreateTechnique()
