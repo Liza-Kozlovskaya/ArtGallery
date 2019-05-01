@@ -36,49 +36,36 @@ namespace Gallery1.Controllers
                 model.GenresCollection = db.Genres.ToList();
                 model.TechniquesCollection = db.Techniques.ToList();
                 model.LocationsCollection = db.Locations.ToList();
+                model.PhotoArtCollection = db.PhotoArts.ToList();
             }
             return View(model);
-            //using (ArtContext db = new ArtContext())
-            //{
-            //    var model = new EditModel
-            //    {
-            //        ArtWorks = db.ArtWorks.FirstOrDefault(a => a.Id == Id),
-            //        Authors = db.Authors.ToList(),
-            //        PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id),
-            //        AuthorsCollection = db.Authors.ToList<Author>();
-            //    };
-            //    return View(model);
-            //}
-            //ArtWork artWork = db.ArtWorks.Include(a => a.Author)
-            //    .FirstOrDefault(a => a.Id == Id);
-            //return View(artWork);
-
         }
 
         [HttpPost]
         public ActionResult EditArts(ArtWork editModel, HttpPostedFileBase upload, int Id)
         {
-            if (upload != null)
-            {
-                string fileName = System.IO.Path.GetFileName(upload.FileName);
-                upload.SaveAs(Server.MapPath("~/Files/" + fileName));
-                int photoId;
-                using (ArtContext db1 = new ArtContext())
+                if (upload != null)
                 {
-                    PhotoArt p1 = new PhotoArt { PhotoName = fileName, Photo = Server.MapPath("~/ Files / " + fileName) };
-                    db1.PhotoArts.Add(p1);
-                    db1.SaveChanges();
-                    photoId = p1.Id;
-                    ArtWork artWork = db1.ArtWorks.Where(p => p.Id == Id).FirstOrDefault();
-                    artWork.PhotoArtId = photoId;
-                    db1.SaveChanges();
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    upload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                    int photoId;
+                    using (ArtContext db1 = new ArtContext())
+                    {
+                        PhotoArt p1 = new PhotoArt { PhotoName = fileName, Photo = Server.MapPath("~/ Files / " + fileName) };
+                        db1.PhotoArts.Add(p1);
+                        db1.SaveChanges();
+                        photoId = p1.Id;
+                        ArtWork artWork = db1.ArtWorks.Where(p => p.Id == Id).FirstOrDefault();
+                        artWork.PhotoArtId = photoId;
+                        db1.SaveChanges();
+                    }
                 }
-            }
-            else
-            {
-                db.Entry(editModel).State = EntityState.Modified;
-                db.SaveChanges();
-            }
+                else
+                {
+                    db.Entry(editModel).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            
             return RedirectToAction("ListArts");
         }
 

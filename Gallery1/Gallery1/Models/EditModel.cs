@@ -34,5 +34,8 @@ namespace Gallery1.Models
         //дроп локации
         public Nullable<int> LocationId { get; set; }
         public List<Location> LocationsCollection { get; set; }
+
+        public Nullable<int> PhotoArtId { get; set; }
+        public List<PhotoArt> PhotoArtCollection { get; set; }
     }
 }
