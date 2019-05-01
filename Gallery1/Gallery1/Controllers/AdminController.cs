@@ -32,6 +32,10 @@ namespace Gallery1.Controllers
                 model.Authors = db.Authors.ToList();
                 model.PhotoArt = db.PhotoArts.FirstOrDefault(a => a.Id == Id);
                 model.AuthorsCollection = db.Authors.ToList();
+                model.TypesCollection = db.Types.ToList();
+                model.GenresCollection = db.Genres.ToList();
+                model.TechniquesCollection = db.Techniques.ToList();
+                model.LocationsCollection = db.Locations.ToList();
             }
             return View(model);
             //using (ArtContext db = new ArtContext())
@@ -52,17 +56,29 @@ namespace Gallery1.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditArts(EditModel model, HttpPostedFileBase image = null)
+        public ActionResult EditArts(ArtWork editModel, HttpPostedFileBase upload, int Id)
         {
-            if(ModelState.IsValid)
+            if (upload != null)
             {
-                model.PhotoArt.PhotoName = image.ContentType;
-                model.PhotoArt.Photo = new byte[image.ContentLength];
-                image.InputStream.Read(model.PhotoArt.Photo, 0, image.ContentLength);
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                upload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                int photoId;
+                using (ArtContext db1 = new ArtContext())
+                {
+                    PhotoArt p1 = new PhotoArt { PhotoName = fileName, Photo = Server.MapPath("~/ Files / " + fileName) };
+                    db1.PhotoArts.Add(p1);
+                    db1.SaveChanges();
+                    photoId = p1.Id;
+                    ArtWork artWork = db1.ArtWorks.Where(p => p.Id == Id).FirstOrDefault();
+                    artWork.PhotoArtId = photoId;
+                    db1.SaveChanges();
+                }
             }
-            db.Entry(model.ArtWorks).State = EntityState.Modified; /////// склеить вместе
-            //db.Entry(model.PhotoArt).State = EntityState.Modified; ////////
-            db.SaveChanges();
+            else
+            {
+                db.Entry(editModel).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             return RedirectToAction("ListArts");
         }
 
