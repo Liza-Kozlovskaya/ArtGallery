@@ -70,6 +70,29 @@ namespace Gallery1.Controllers
         }
 
         [HttpGet]
+        public ActionResult UploadPhoto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadPhoto(PhotoArt photo, HttpPostedFileBase upload)
+        {
+            if(upload != null)
+            {
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                upload.SaveAs(Server.MapPath("~/Files/" + fileName));
+                using (ArtContext db = new ArtContext())
+                {
+                    PhotoArt p1 = new PhotoArt { PhotoName = fileName, Photo = Server.MapPath("~/ Files / " + fileName) };
+                    db.PhotoArts.Add(p1);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("ListArts");
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();

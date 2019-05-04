@@ -236,6 +236,7 @@
     <Content Include="Views\User\LogOff.cshtml" />
     <Content Include="Views\UserControl\ListUser.cshtml" />
     <Content Include="Views\UserControl\EditUser.cshtml" />
+    <Content Include="Views\Admin\UploadPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

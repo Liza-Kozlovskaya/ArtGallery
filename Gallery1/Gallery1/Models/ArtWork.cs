@@ -19,7 +19,6 @@ namespace Gallery1.Models
         public string OriginWorkName { get; set; }
 
         [Display(Name = "Дата создания")]
-        [Required(ErrorMessage = "Пожалуйста, введите дату создания")]
         public string CreationDate { get; set; }
 
         [Display(Name = "Описание")]
@@ -38,42 +37,42 @@ namespace Gallery1.Models
         //внешний ключ для типа работы
         [Display(Name = "Тип")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? TypeId { get; set; }
         public Type Type { get; set; }
 
         //внешний ключ для автора работы
         [Display(Name = "Автор")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? AuthorId { get; set; }
         public Author Author { get; set; }
 
         //внешний ключ для жанра работы
         [Display(Name = "Жанр")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? GenreId { get; set; }
         public Genre Genre { get; set; }
 
         //внешний ключ для технологии работы
         [Display(Name = "Техника")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? TechniqueId { get; set; }
         public Technique Technique { get; set; }
 
         //внешний ключ для места хранения работы
         [Display(Name = "Локация")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? LocationId { get; set; }
         public Location Location { get; set; }
 
         //внешний ключ для фото арта
         [Display(Name = "Фото")]
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
+        [Range(0, int.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение типа")]
         public int? PhotoArtId { get; set; }
         public PhotoArt PhotoArt { get; set; }
 
