@@ -23,7 +23,7 @@ namespace Gallery1.Controllers
                 .Include(a => a.Technique));
         }
 
-        public ViewResult EditArts(int Id)
+        public ActionResult EditArts(int Id)
         {
             EditModel model = new EditModel();
             using (ArtContext db = new ArtContext())
@@ -42,7 +42,7 @@ namespace Gallery1.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditArts(ArtWork editModel, HttpPostedFileBase upload, int Id)
+        public ActionResult EditArts(EditModel model, HttpPostedFileBase upload, int Id)
         {
                 if (upload != null)
                 {
@@ -62,7 +62,7 @@ namespace Gallery1.Controllers
                 }
                 else
                 {
-                    db.Entry(editModel).State = EntityState.Modified;
+                    db.Entry(model.ArtWorks).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             
