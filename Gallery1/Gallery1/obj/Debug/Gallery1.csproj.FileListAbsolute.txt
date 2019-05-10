@@ -93,3 +93,5 @@ C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.dll
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.Mvc.dll
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.xml
 C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\PagedList.Mvc.xml
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\System.Web.Providers.dll
+C:\Users\A-Servis\source\repos\Gallery1\Gallery1\bin\System.Web.Providers.xml

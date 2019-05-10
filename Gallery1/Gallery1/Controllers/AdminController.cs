@@ -78,7 +78,7 @@ namespace Gallery1.Controllers
         [HttpPost]
         public ActionResult UploadPhoto(PhotoArt photo, HttpPostedFileBase upload)
         {
-            if(upload != null)
+            if (upload != null)
             {
                 string fileName = System.IO.Path.GetFileName(upload.FileName);
                 upload.SaveAs(Server.MapPath("~/Files/" + fileName));
